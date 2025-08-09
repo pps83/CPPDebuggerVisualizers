@@ -294,6 +294,21 @@
 </Type>
 
 <!-- boost >= 1.65 -->
+<Type Name="boost::container::flat_map&lt;*&gt;" ExcludeView="ShowElementsByIndex" Priority="MediumLow">
+    <Intrinsic Name="size" Expression="(size_t)(m_flat_tree.m_data.m_seq._Mypair._Myval2._Mylast - m_flat_tree.m_data.m_seq._Mypair._Myval2._Myfirst)" />
+    <Intrinsic Name="capacity" Expression="(size_t)(m_flat_tree.m_data.m_seq._Mypair._Myval2._Myend - m_flat_tree.m_data.m_seq._Mypair._Myval2._Myfirst)" />
+    <Expand>
+        <Item Name="size">(size_t)(m_flat_tree.m_data.m_seq._Mypair._Myval2._Mylast - m_flat_tree.m_data.m_seq._Mypair._Myval2._Myfirst)</Item>
+        <Item Name="capacity">(size_t)(m_flat_tree.m_data.m_seq._Mypair._Myval2._Myend - m_flat_tree.m_data.m_seq._Mypair._Myval2._Myfirst)</Item>
+        <LinkedListItems>
+            <Size>size()</Size>
+            <HeadPointer>&amp;m_flat_tree.m_data.m_seq[0]</HeadPointer>
+            <NextPointer>this + 1</NextPointer>
+            <ValueNode Name="[{this->first}]">*this,view(MapHelper)</ValueNode>
+        </LinkedListItems>
+    </Expand>
+</Type>
+
 <Type Name="boost::container::flat_map&lt;*&gt;" ExcludeView="ShowElementsByIndex" Priority="Medium">
     <Intrinsic Name="size" Expression="m_flat_tree.m_data.m_seq.m_holder.m_size" />
     <Intrinsic Name="capacity" Expression="m_flat_tree.m_data.m_seq.m_holder.m_capacity" />
